@@ -1,0 +1,48 @@
+{% load static %}
+{% load tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css">
+        <title>Sign Up</title>
+    </head>
+    <body>
+        <div class="content">
+            <h4 class="heading">Sign Up</h4>
+            <form class="form" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form__field">
+                    {{ form.username.errors }}
+                    <label class="form__label" for="{{ form.username.auto_id }}">{{ form.username.label }}</label>
+                    <div class="form__helptext">{{ form.username.help_text }}</div>
+                    {{ form.username|addClass:'form__input' }}
+                </div>
+                <p></p>
+                <div class="form__field">
+                    {{ form.password1.errors }}
+                    <label class="form__label" for="{{ form.password1.auto_id }}">{{ form.password1.label }}</label>
+                    <div class="form__helptext">{{ form.password1.help_text }}</div>
+                    {{ form.password1|addClass:'form__input' }}
+                </div>
+                <p></p>
+                <div class="form__field">
+                    {{ form.password2.errors }}
+                    <label class="form__label" for="{{ form.password2.auto_id }}">{{ form.password2.label }}</label>
+                    <div class="form__helptext">{{ form.password2.help_text }}</div>
+                    {{ form.password2|addClass:'form__input' }}
+                </div>
+                <p></p>
+                <div class="form__field">
+                    {{ form.usable_password.errors }}
+                    <label class="form__label" for="{{ form.usable_password.auto_id }}">{{ form.usable_password.label }}</label>
+                    <div class="form__helptext">{{ form.usable_password.help_text }}</div>
+                    {{ form.usable_password }}
+                </div>
+                <p></p>
+                <button class="form__button" type="submit">Confirm</button>
+            </form>
+        </div>
+    </body>
+</html>

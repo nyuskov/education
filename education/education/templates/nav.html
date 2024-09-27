@@ -1,0 +1,17 @@
+{% load static %}
+<div class="nav">
+    <div class="nav__icon">
+        <div class="nav__text">
+            <strong class="nav__glyph">___</strong>
+            <strong class="nav__glyph">___</strong>
+            <strong class="nav__glyph">___</strong>
+            <strong class="nav__glyph is_hidden">x</strong>
+        </div>
+    </div>
+    <a href="{% url 'account:index' %}"><img class="nav__img" src="{% static 'images/user.png' %}"></a>
+    <div class="nav__link is_hidden"><a class="link" href="{% url 'account:signup' %}">Sign Up</a></div>
+    <form id="signout" class="is_hidden" action="{% url 'account:signout' %}" method="post">
+        {% csrf_token %}
+        <input class="nav__link link is_hidden" form="signout" type="submit" value="Sign Out">
+    </form>
+</div>

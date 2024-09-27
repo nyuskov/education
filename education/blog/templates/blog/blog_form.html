@@ -1,0 +1,16 @@
+{% load tags %}
+<div class="blog-form">
+    <div class="blog-form__field blog-form__title">
+        {{ article.title }}
+    </div>
+    <div class="blog-form__field blog-form__message">
+        <p>{{ article.message }}</p>
+    </div>
+    <div class="blog-form__field blog-form__button">
+        <strong>show full</strong>
+    </div>
+    <div class="blog-form__field blog-form__author">
+        was written by <strong>{{ article.author }}</strong>
+    </div>
+</div>
+<p></p>

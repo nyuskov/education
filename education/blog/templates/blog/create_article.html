@@ -1,0 +1,41 @@
+{% load static %}
+{% load tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
+        <title>Main</title>
+    </head>
+    <body>
+        <div class="main">
+            {% if user.is_authenticated %}
+            {% include "nav.html" %}
+            {% endif %}
+            <div class="content">
+                {% if user.is_authenticated %}
+                    <h4 class="heading">Create new article</h4>
+                    <form class="form" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="form__field">
+                            {{ form.title.errors }}
+                            <label class="form__label" for="{{ form.title.auto_id }}">{{ form.title.label }}</label>
+                            {{ form.title|addClass:'form__input' }}
+                        </div>
+                        <div class="form__field">
+                            {{ form.message.errors }}
+                            <label class="form__label" for="{{ form.message.auto_id }}">{{ form.message.label }}</label>
+                            {{ form.message|addClass:'form__textarea' }}
+                        </div>
+                        {% if result %}
+                            <p class="form__result">{{ result }}</p>
+                        {% endif %}
+                        <p></p>
+                        <button class="form__button" type="submit">Confirm</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
