@@ -1,1 +1,1 @@
-# education
+# education (Django project)
