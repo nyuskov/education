@@ -5,7 +5,7 @@ let messagesText;
 let nRows;
 
 function createPagination() {
-    let pagination = $(".pagination"); 
+    let pagination = $(".pagination");
     let html = '';
     let previousPageNumber = currentPageNumber - 1;
     let nextPageNumber = currentPageNumber + 1;
@@ -36,6 +36,7 @@ function createPagination() {
             html += searchText;
         }
         html += '">' + nextPageNumber + '</a>';
+
         html += nextHTML;
         if (searchWord) {
             html += searchText;
@@ -43,7 +44,31 @@ function createPagination() {
         html += '">&rsaquo;</a>';
     }
 
+    if (totalPages > 1) {
+        html += '<input class="pagination__input"><a class="pagination__link">GO</a>';
+    }
+
     pagination.html(html);
+
+    $('.pagination__input').on('change', function (e) {
+        let inputNumber = parseInt($(this).val());
+        if (isNaN(inputNumber)) {
+            return false;
+        } else if (inputNumber < 1) {
+            inputNumber = 1;
+        } else if (inputNumber > totalPages) {
+            inputNumber = totalPages;
+        }
+        
+        let pageLink = "?page=" + inputNumber;
+        if (searchWord) {
+            pageLink += searchText;
+        }
+
+        $(this).next().attr('href', pageLink);
+
+        e.preventDefault();
+    });
 }
 
 function escapeHtml(unsafe) {
@@ -56,7 +81,7 @@ function escapeHtml(unsafe) {
 }
 
 // Change number of glyphs in messages on shows 
-function refillMessage(i, maxSymbols, isHide=true) {
+function refillMessage(i, maxSymbols, isHide = true) {
     let newMessage = messagesText[i].substring(0, maxSymbols);
     if (maxSymbols < messagesText[i].length) {
         newMessage += '...';
@@ -74,7 +99,7 @@ function showMessages() {
 }
 
 // Animate show button
-function showMessage(self, nColumns, i, isInit=false) {
+function showMessage(self, nColumns, i, isInit = false) {
     let messageContent = $(self).find('strong');
     let message = $(messages[i]);
     let maxSymbols;
@@ -103,25 +128,25 @@ $(document).ready(function () {
     messagesText = [];
     nRows = Math.floor(parseInt($(messages[0]).css('height')) / parseInt($(messages[0]).css('font-size')));
     let nColumns = Math.floor(parseInt($(messages[0]).css('width'))) / (parseInt($(messages[0]).css('font-size')) / 1.6);
-    
+
     // Refill text and show message initialize
     Array.prototype.forEach.call(messages, message => {
         let nMessage = messagesText.length;
-        
+
         messagesText.push($(message).find('p').text());
         showMessage(message, nColumns, nMessage, true);
 
-        $(message).next().on('click', function(e){
+        $(message).next().on('click', function (e) {
             showMessage(this, nColumns, nMessage);
             e.preventDefault();
         });
-    });     
+    });
 
     createPagination();
     $(window).on('resize', function () {
         showMessages();
     });
-    $('#search').on('change', function(){
+    $('#search').on('change', function () {
         $(this).text(escapeHtml($(this).text));
     });
 });

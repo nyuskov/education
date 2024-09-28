@@ -71,16 +71,36 @@
 }
 
 .pagination__link {
+    align-items: center;
     background-color: var(--input-color);
     border-radius: 3px;
     color: var(--main-bg-color);
+    cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 35px;
-    margin: 1px;
+    margin: 0px 1px;
     text-decoration: none;
     width: 35px;
+}
+
+.pagination__input {
+    align-items: center;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 3px;
+    color: var(--main-bg-color);
+    font-family: 'Tahoma';
+    font-size: 16px;
+    height: 35px;
+    margin: 0px 1px;
+    padding: 0px 1px;
+    text-align: center;
+    width: 50px;
+}
+
+.pagination__input:focus {
+    outline: none;
 }
 
 .pagination__link_active {

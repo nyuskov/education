@@ -44,7 +44,10 @@ class ArticleView(FormView):
             articles = Article.objects.all()
 
         paginator = Paginator(articles, 5)
-        page_number = request.GET.get("page", 1)
+        page_number = int(request.GET.get("page", 1))
+        if (page_number < 1):
+            page_number = 1
+
         page_obj = paginator.get_page(page_number)
 
         return render(request, self.template_name, {
