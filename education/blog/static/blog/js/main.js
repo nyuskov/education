@@ -44,7 +44,7 @@ function createPagination() {
         html += '">&rsaquo;</a>';
     }
 
-    if (totalPages > 1) {
+    if (totalPages > 2) {
         html += '<input class="pagination__input"><a class="pagination__link">GO</a>';
     }
 
@@ -93,7 +93,7 @@ function refillMessage(i, maxSymbols, isHide = true) {
 function showMessages() {
     let nColumns = Math.floor(parseInt($(messages[0]).css('width'))) / (parseInt($(messages[0]).css('font-size')) / 1.6);
 
-    for (i = 0; i < messages.length; ++i) {
+    for (let i = 0; i < messages.length; ++i) {
         showMessage($(messages[i]).next(), nColumns, i, true);
     }
 }
