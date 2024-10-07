@@ -96,7 +96,6 @@ body {
     display: flex;
     color: var(--main-color);
     flex-direction: column;
-    height: 800px;
     justify-content: center;
     justify-items: center;
     width: 100%;
@@ -164,6 +163,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 10px;
 }
 
 .form__field_center {

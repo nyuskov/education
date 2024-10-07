@@ -10,5 +10,5 @@ class Article(models.Model):
     title = models.CharField(max_length=120)
     message = models.TextField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title

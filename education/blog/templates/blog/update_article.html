@@ -3,12 +3,12 @@
 {% load tags %}
 
 {% block title %}
-    Create article
+    Update article
 {% endblock %}
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h4 class="heading">Create new article</h4>
+        <h4 class="heading">Update article #{{ object.pk }}</h4>
         <form class="form" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}

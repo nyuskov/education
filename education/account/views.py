@@ -1,14 +1,15 @@
 from django.contrib.auth.views import LoginView
-from django.views.generic import FormView
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views import generic
+from django.forms import BaseModelForm
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import UpdateView, CreateView
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy, reverse
 from .forms import (CustomUserCreationForm,
                     CustomAuthenticationForm,
-                    CustomUserChangeForm)
+                    CustomUserForm)
 
 
-class SignUpView(generic.CreateView):
+class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'account/signup.html'
     success_url = reverse_lazy('account:signin')
@@ -17,19 +18,16 @@ class SignUpView(generic.CreateView):
 class SignInView(LoginView):
     form_class = CustomAuthenticationForm
     template_name = 'account/signin.html'
+    redirect_authenticated_user = True
 
 
-class UserChangeView(FormView):
-    form_class = CustomUserChangeForm
+class UserChangeView(UpdateView):
+    form_class = CustomUserForm
     template_name = 'account/profile.html'
 
-    def get(self, request, *args, **kwargs):
-        data = {
-            'username': request.user.username,
-            'password': request.user.password,
-        }
+    def get_queryset(self):
+        return User.objects.prefetch_related(
+            'groups', 'user_permissions')
 
-        return render(request, template_name=self.template_name,
-                      context={
-                          'form': CustomUserChangeForm(
-                              data)})
+    def get_success_url(self) -> str:
+        return reverse("account:index", kwargs={"pk": self.object.pk})

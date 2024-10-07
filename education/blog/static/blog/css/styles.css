@@ -1,8 +1,3 @@
-/* Content */
-.content-blog {
-    height: 100%;
-}
-
 /* Forms */
 .blog-form {
     box-shadow: 0 1px 3px var(--input-bg-color);
@@ -26,6 +21,28 @@
     padding: 15px 5px;
     text-align: center;
 }
+
+.blog-form__field_right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.blog-form__link {
+    color: var(--main-color);
+    font-family: 'Roboto-Regular';
+    font-size: 24px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+}
+
+.blog-form__img {
+    height: 35px;
+    width: 35px;
+}
+
 
 .blog-form__author {
     color: var(--input-color);

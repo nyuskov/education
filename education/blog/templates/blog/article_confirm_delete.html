@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% load tags %}
+
+{% block title %}
+    Confirm delete "{{ object.title }}"
+{% endblock %}
+
+{% block content %}
+    <h1>Are you shure you want to delete "{{ object.title }}"?</h1>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="form__button" type="submit">Delete</button>
+        </form>
+    </div>
+{% endblock %}

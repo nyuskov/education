@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
         {% block script %}
-            <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
         {% endblock %}
         <title>
             {% block title %}
@@ -15,13 +15,14 @@
         <div class="main">
             <div class="header">
                 {% block header %}
+                    {% if user.is_authenticated %}
+                        {% include "nav.html" %}
+                    {% endif %}
                 {% endblock %}
             </div>
-            <div class="content content-blog">
+            <div class="content">
                 {% block content %}
                 {% endblock %}
-            </div>
-            <div class="pagination">
             </div>
         </div>
     </body>

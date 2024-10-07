@@ -1,9 +1,8 @@
-{% extends "blog/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load tags %}
 
 {% block script %}
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
     {% if user.is_authenticated %}
         <link href="{% static 'blog/css/pagination.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" type="text/css">
@@ -42,4 +41,6 @@
             {% include "blog/blog_form.html" %}
         {% endfor %}
     {% endif %}
+    <div class="pagination">
+    </div>
 {% endblock %}

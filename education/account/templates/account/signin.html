@@ -1,36 +1,29 @@
+{% extends "base.html" %}
 {% load static %}
 {% load tags %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css">
-        <title>Sign In</title>
-    </head>
-    <body>
-        <div class="content">
-            {% if not user.is_authenticated %}
-                <h4 class="heading">Sign In</h4>
-                <form class="form" method="post">
-                    {% csrf_token %}
-                    {{ form.non_field_errors }}
-                    <div class="form__field form__field_center">
-                        {{ form.username.errors }}
-                        {{ form.username|addClass:'form__input' }}
-                    </div>
-                    <div class="form__field form__field_center">
-                        {{ form.password.errors }}
-                        {{ form.password|addClass:'form__input' }}
-                    </div>
-                    <p></p>
-                    <button class="form__button" type="submit">Enter</button>
-                </form>
-            {% else %}
-                <form action="{% url 'account:signout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="link" type="submit">Sign Out</button>
-                </form>
-            {% endif %}
+
+{% block script %}
+    <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block content %}
+    <h4 class="heading">Sign In</h4>
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form__field form__field_center">
+            {{ form.username.errors }}
+            {{ form.username|addClass:'form__input' }}
         </div>
-    </body>
-</html>
+        <div class="form__field form__field_center">
+            {{ form.password.errors }}
+            {{ form.password|addClass:'form__input' }}
+        </div>
+        <p></p>
+        <button class="form__button" type="submit">Enter</button>
+    </form>
+{% endblock %}
