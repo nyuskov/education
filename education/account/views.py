@@ -6,13 +6,21 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
 from .forms import (CustomUserCreationForm,
                     CustomAuthenticationForm,
-                    CustomUserForm)
+                    CustomUserForm,
+                    CustomProfileForm)
+from .models import Profile
 
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'account/signup.html'
     success_url = reverse_lazy('account:signin')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        Profile.objects.create(user=self.object)
+
+        return response
 
 
 class SignInView(LoginView):
@@ -22,8 +30,40 @@ class SignInView(LoginView):
 
 
 class UserChangeView(UpdateView):
-    form_class = CustomUserForm
     template_name = 'account/profile.html'
+    form_class = CustomUserForm
+
+    def get_context_data(self, profile_form=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profile_form"] = profile_form or CustomProfileForm(
+            instance=getattr(self.object, "profile", None))
+
+        return context
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        if self.request.method == "POST":
+            if getattr(self.object, "profile", None):
+                data = self.request.POST.dict()
+                data["user"] = self.object
+                profile_form = CustomProfileForm(
+                    data,
+                    instance=self.object.profile
+                )
+                if profile_form.is_valid():
+                    profile_form.save()
+                else:
+                    return self.render_to_response(
+                        self.get_context_data(
+                            profile_form=profile_form,
+                            form=form))
+            else:
+                Profile.objects.create(
+                    user=self.object,
+                    bio=self.request.POST.get("bio"),)
+
+        return response
 
     def get_queryset(self):
         return User.objects.prefetch_related(

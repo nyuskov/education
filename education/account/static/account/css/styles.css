@@ -1,5 +1,5 @@
 /* Links */
-.link {
+.form__link {
     color: var(--main-color);
     background-color: var(--main-bg-color);
     border: none;
@@ -7,4 +7,10 @@
     font-family: 'Roboto-Regular';
     font-size: 24px;
     text-decoration: none;
+}
+.form__input_readonly {
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+    pointer-events: none;
+    width: 100%;
 }

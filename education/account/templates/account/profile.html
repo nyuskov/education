@@ -2,6 +2,10 @@
 {% load static %}
 {% load tags %}
 
+{% block script %}
+    <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block title %}
     Sign In
 {% endblock %}
@@ -14,28 +18,33 @@
             <div class="form__field">
                 <label class="form__label">{{ form.username.label }}</label>
                 {{ form.username.errors }}
-                {{ form.username }}
+                {{ form.username|addClass:"form__input form__input_readonly" }}
             </div>
             <div class="form__field">
-                <label class="form__label" for={{ form.password.auto_id }}>{{ form.password.label }}</label>
+                <label class="form__label">{{ form.password.label }}</label>
                 {{ form.password.errors }}
                 {{ form.password.help_text }}
-                {{ form.password }}
+                {{ form.password|addClass:"form__input form__input_readonly" }}
             </div>
             <div class="form__field">
-                <label class="form__label" for={{ form.first_name.auto_id }}>{{ form.first_name.label }}</label>
+                <label class="form__label" for="{{ form.first_name.auto_id }}">{{ form.first_name.label }}</label>
                 {{ form.first_name.errors }}
                 {{ form.first_name|addClass:"form__input" }}
             </div>
             <div class="form__field">
-                <label class="form__label" for={{ form.last_name.auto_id }}>{{ form.last_name.label }}</label>
+                <label class="form__label" for="{{ form.last_name.auto_id }}">{{ form.last_name.label }}</label>
                 {{ form.last_name.errors }}
                 {{ form.last_name|addClass:"form__input" }}
             </div>
             <div class="form__field">
-                <label class="form__label" for={{ form.email.auto_id }}>{{ form.email.label }}</label>
+                <label class="form__label" for="{{ form.email.auto_id }}">{{ form.email.label }}</label>
                 {{ form.email.errors }}
                 {{ form.email|addClass:"form__input" }}
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="{{ profile_form.bio.auto_id }}">{{ profile_form.bio.label }}</label>
+                {{ profile_form.bio.errors }}
+                {{ profile_form.bio|addClass:"form__textarea" }}
             </div>
             <div class="form__field">
                 <label class="form__label">{{ form.groups.label }}</label>
@@ -65,10 +74,12 @@
             <button class="form__button" type="submit">Change</button>
         </form>
         <p>
-            <form action="{% url 'account:signout' %}" method="post">
+            <form class="form" action="{% url 'account:signout' %}" method="post">
                 {% csrf_token %}
-                <button class="link" type="submit">Sign Out</button>
+                <button class="form__link" type="submit">Sign Out</button>
             </form>
         </p>
+    {% else %}
+        <h1>User is anonymous</h1>
     {% endif %}
 {% endblock %}

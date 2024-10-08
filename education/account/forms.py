@@ -1,8 +1,9 @@
-from typing import Any
+from django import forms
 from django.contrib.auth.forms import (
     UserCreationForm, AuthenticationForm)
 from django.contrib.auth.models import User
 from django.forms import ModelForm, ValidationError
+from .models import Profile
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -19,19 +20,12 @@ class CustomUserForm(ModelForm):
         model = User
         fields = ("username", "password",
                   "groups", "first_name", "last_name",
-                  "email", "user_permissions",)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields["username"].widget.attrs["readonly"] = True
-        self.fields["groups"].widget.attrs["readonly"] = True
-        self.fields["user_permissions"].widget.attrs["readonly"] = True
+                  "email", "user_permissions")
 
     def clean(self):
         data = super().clean()
 
-        for key in ("username", "groups", "user_permissions"):
+        for key in ("username", "password", "groups", "user_permissions"):
             new_data = data.get(key)
 
             if key in ("groups", "user_permissions"):
@@ -44,6 +38,12 @@ class CustomUserForm(ModelForm):
                     "This field is readonly"))
 
         return data
+
+
+class CustomProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = "__all__"
 
 
 class CustomAuthenticationForm(AuthenticationForm):
