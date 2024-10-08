@@ -22,6 +22,14 @@ class CustomUserForm(ModelForm):
                   "groups", "first_name", "last_name",
                   "email", "user_permissions")
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance.is_staff:
+            self.fields['user_permissions'].queryset = \
+                self.instance.user_permissions
+        self.fields[
+            'groups'].queryset = self.instance.groups
+
     def clean(self):
         data = super().clean()
 
