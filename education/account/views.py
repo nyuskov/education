@@ -28,7 +28,7 @@ class SignInView(LoginView):
     redirect_authenticated_user = True
 
 
-class UserChangeView(UpdateView):
+class UserChangeView(PermissionRequiredMixin, UpdateView):
     permission_required = ("account.view_profile", "auth.view_user",)
     template_name = 'account/profile.html'
     form_class = CustomUserForm
