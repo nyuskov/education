@@ -8,7 +8,7 @@
             <strong class="nav__glyph is_hidden">x</strong>
         </div>
     </div>
-    <a href="{% url 'account:index' request.user.pk %}"><img class="nav__img" src="{% static 'images/user.png' %}"></a>
+    <a href="{% url 'account:index' user.pk %}"><img class="nav__img" src="{% static 'images/user.png' %}"></a>
     <div class="nav__link is_hidden"><a class="link" href="{% url 'account:signup' %}">Sign Up</a></div>
     <form id="signout" class="is_hidden" action="{% url 'account:signout' %}" method="post">
         {% csrf_token %}

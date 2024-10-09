@@ -15,6 +15,18 @@ class Command(BaseCommand):
         permission_logentry = Permission.objects.get(
             codename="view_logentry"
         )
+        permission_changeprofile = Permission.objects.get(
+            codename="change_profile"
+        )
+        permission_viewprofile = Permission.objects.get(
+            codename="view_profile"
+        )
+        permission_viewuser = Permission.objects.get(
+            codename="view_user"
+        )
+        permission_changeuser = Permission.objects.get(
+            codename="change_user"
+        )
 
         # Добавление разрешения в группу
         group.permissions.add(permission_profile)
@@ -24,6 +36,10 @@ class Command(BaseCommand):
 
         # Связывание пользователя с разрешением
         user.user_permissions.add(permission_logentry)
+        user.user_permissions.add(permission_changeprofile)
+        user.user_permissions.add(permission_viewprofile)
+        user.user_permissions.add(permission_viewuser)
+        user.user_permissions.add(permission_changeuser)
 
         group.save()
         user.save()

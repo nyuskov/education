@@ -70,8 +70,10 @@
                     {% endfor %}
                 </ul>
             </div>
-            <p></p>
-            <button class="form__button" type="submit">Change</button>
+            {% if perms.account.change_profile and perms.auth.change_user %}
+                <p></p>
+                <button class="form__button" type="submit">Change</button>
+            {% endif %}
         </form>
         <p>
             <form class="form" action="{% url 'account:signout' %}" method="post">

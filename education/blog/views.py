@@ -3,13 +3,15 @@ from django.urls import reverse_lazy, reverse
 from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from .forms import ArticleForm
 from .models import Article
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(PermissionRequiredMixin, CreateView):
     model = Article
     form_class = ArticleForm
+    permission_required = "blog.add_article"
     template_name = 'blog/create_article.html'
     success_url = reverse_lazy('blog:create')
 
@@ -32,15 +34,17 @@ class ArticleCreateView(CreateView):
         return super().form_invalid(form)
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     model = Article
+    permission_required = "blog.delete_article"
     template_name = 'blog/article_confirm_delete.html'
     success_url = reverse_lazy('blog:index')
 
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
     model = Article
     form_class = ArticleForm
+    permission_required = "blog.change_article"
     template_name = 'blog/update_article.html'
 
     def get_form_kwargs(self):
@@ -68,7 +72,8 @@ class ArticleUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
-class ArticleView(TemplateView):
+class ArticleView(PermissionRequiredMixin, TemplateView):
+    permission_required = "blog.view_article"
     template_name = 'blog/index.html'
 
     def get_context_data(self, **kwargs):

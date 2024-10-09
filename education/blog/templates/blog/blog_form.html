@@ -1,12 +1,12 @@
 {% load tags %}
 {% load static %}
 <div class="blog-form">
-    {% if user == article.author or user.is_staff %}
-    <div class="blog-form__field blog-form__field_right">
-        <a class="blog-form__link" href="{% url "blog:delete" article.pk %}">
-            <img class="blog-form__img" src="{% static 'blog/images/delete.png' %}">
-        </a>
-    </div>
+    {% if user == article.author or user.is_superuser %}
+        <div class="blog-form__field blog-form__field_right">
+            <a class="blog-form__link" href="{% url "blog:delete" article.pk %}">
+                <img class="blog-form__img" src="{% static 'blog/images/delete.png' %}">
+            </a>
+        </div>
     {% endif %}
     <div class="blog-form__field blog-form__title">
         {{ article.title }}

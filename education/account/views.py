@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LoginView
-from django.forms import BaseModelForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import UpdateView, CreateView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
@@ -30,6 +29,7 @@ class SignInView(LoginView):
 
 
 class UserChangeView(UpdateView):
+    permission_required = ("account.view_profile", "auth.view_user",)
     template_name = 'account/profile.html'
     form_class = CustomUserForm
 
