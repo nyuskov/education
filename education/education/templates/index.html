@@ -1,15 +1,16 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}
-    Main
+   {% translate "Main" %}
 {% endblock %}
 {% block content %}
     {% if not user.is_authenticated %}
         <div class="content__item">
-            <a class="link" href="{% url 'account:signup' %}">Sign Up</a>
+            <a class="link" href="{% url 'account:signup' %}">{% translate "Sign Up" %}</a>
             <p>or</p>
-            <a class="link" href="{% url 'account:signin' %}">Sign In</a>
+            <a class="link" href="{% url 'account:signin' %}">{% translate "Sign In" %}</a>
         </div>
     {% else %}
-        <h4 class="heading">Hello!</h4>
+        <h4 class="heading">{% translate "Hello" %}!</h4>
     {% endif %}
 {% endblock %}

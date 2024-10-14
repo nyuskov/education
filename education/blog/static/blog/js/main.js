@@ -104,14 +104,14 @@ function showMessage(self, nColumns, i, isInit = false) {
     let message = $(messages[i]);
     let maxSymbols;
 
-    if (messageContent.text() == 'show full' && !isInit) {
+    if (messageContent.text() == gettext('show full') && !isInit) {
         maxSymbols = messagesText[i].length;
         message.css('height', '100%');
-        messageContent.text('hide full');
+        messageContent.text(gettext('hide full'));
     } else {
         maxSymbols = nRows * nColumns;
         message.css('height', '150px');
-        messageContent.text('show full');
+        messageContent.text(gettext('show full'));
 
         if (maxSymbols < messagesText[i].length) {
             message.next().show();

@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% load tags %}
 
 {% block title %}
-    Confirm delete {% firstof object.title "comment"  %}
+    {% translate "comment" as comment %}
+    {% translate "Confirm delete" %} {% firstof object.title comment  %}
 {% endblock %}
 
 {% block content %}
-    <h1>Are you shure you want to delete {% firstof object.title "comment"  %}?</h1>
+    <h1>{% translate "Are you shure you want to delete" %} {% firstof object.title comment  %}?</h1>
     <div>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="form__button" type="submit">Delete</button>
+            <button class="form__button" type="submit">{% translate "Delete" %}</button>
         </form>
     </div>
 {% endblock %}

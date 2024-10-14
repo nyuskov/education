@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% load tags %}
+{% load i18n %}
 
 {% block script %}
     <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block title %}
-    Sign In
+    {% translate "Sign Up" %}
 {% endblock %}
 
 {% block content %}
-    <h4 class="heading">Sign Up</h4>
+    <h4 class="heading">{% translate "Sign Up" %}</h4>
     <form class="form" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -43,6 +44,6 @@
             {{ form.usable_password }}
         </div>
         <p></p>
-        <button class="form__button" type="submit">Confirm</button>
+        <button class="form__button" type="submit">{% translate "Confirm" %}</button>
     </form>
 {% endblock %}

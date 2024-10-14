@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load i18n %}
 {% load static %}
 <div class="comment-form">
     {% if user == article.author or user.is_superuser %}
@@ -21,7 +22,7 @@
         {{ comment.edited_at }}
     </div>
     <div class="comment-form__field">
-        was written by <strong>{{ comment.author }}</strong>
+        {% translate "was written by" %} <strong>{{ comment.author }}</strong>
     </div>
     <div class="comment-form__reply">
         {% for reply in comment|getReplies %}

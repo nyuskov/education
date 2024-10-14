@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% load tags %}
 
 {% block script %}
@@ -7,11 +8,11 @@
 {% endblock %}
 
 {% block title %}
-    Sign In
+    {% translate "Sign In" %}
 {% endblock %}
 
 {% block content %}
-    <h4 class="heading">Sign In</h4>
+    <h4 class="heading">{% translate "Sign In" %}</h4>
     <form class="form" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -24,6 +25,6 @@
             {{ form.password|addClass:'form__input' }}
         </div>
         <p></p>
-        <button class="form__button" type="submit">Enter</button>
+        <button class="form__button" type="submit">{% translate "Enter" %}</button>
     </form>
 {% endblock %}

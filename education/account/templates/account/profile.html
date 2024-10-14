@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% load tags %}
 
 {% block script %}
@@ -7,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-    Sign In
+    {% translate "Sign In" %}
 {% endblock %}
 
 {% block content %}
@@ -72,16 +73,16 @@
             </div>
             {% if perms.account.change_profile and perms.auth.change_user %}
                 <p></p>
-                <button class="form__button" type="submit">Change</button>
+                <button class="form__button" type="submit">{% translate "Change" %}</button>
             {% endif %}
         </form>
         <p>
             <form class="form" action="{% url 'account:signout' %}" method="post">
                 {% csrf_token %}
-                <button class="form__link" type="submit">Sign Out</button>
+                <button class="form__link" type="submit">{% translate "Sign Out" %}</button>
             </form>
         </p>
     {% else %}
-        <h1>User is anonymous</h1>
+        <h1>{% translate "User is anonymous" %}</h1>
     {% endif %}
 {% endblock %}

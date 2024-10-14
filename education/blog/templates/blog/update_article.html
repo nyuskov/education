@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 {% load tags %}
+{% load i18n %}
 
 {% block title %}
-    Update article
+   {% translate "Update article" %} 
 {% endblock %}
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h4 class="heading">Update article #{{ object.pk }}</h4>
+        <h4 class="heading">{% translate "Update article" %} #{{ object.pk }}</h4>
         <form class="form" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -33,7 +34,7 @@
                 {% endfor %}
             {% endif %}
             <p></p>
-            <button class="form__button" type="submit">Confirm</button>
+            <button class="form__button" type="submit">{% translate "Confirm" %}</button>
         </form>
     {% endif %}
 {% endblock %}

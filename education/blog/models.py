@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
 
@@ -33,8 +34,8 @@ class Article(models.Model):
         ordering = ['title']
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=120)
-    message = models.TextField()
+    title = models.CharField(max_length=120, verbose_name=_("Title"))
+    message = models.TextField(verbose_name=_("Message"))
 
     def __str__(self) -> str:
         return self.title
