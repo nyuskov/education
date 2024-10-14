@@ -20,5 +20,10 @@
     <div class="blog-form__field blog-form__author">
         was written by <strong>{{ article.author }}</strong>
     </div>
+    {% for comment in article.comment_set.all %}
+        {% if not comment.parent %}
+            {% include "blog/comment_form.html" %}
+        {% endif %}
+    {% endfor %}
 </div>
 <p></p>

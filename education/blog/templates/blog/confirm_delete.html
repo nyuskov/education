@@ -3,11 +3,11 @@
 {% load tags %}
 
 {% block title %}
-    Confirm delete "{{ object.title }}"
+    Confirm delete {% firstof object.title "comment"  %}
 {% endblock %}
 
 {% block content %}
-    <h1>Are you shure you want to delete "{{ object.title }}"?</h1>
+    <h1>Are you shure you want to delete {% firstof object.title "comment"  %}?</h1>
     <div>
         <form method="post">
             {% csrf_token %}

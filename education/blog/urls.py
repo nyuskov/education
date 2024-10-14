@@ -19,7 +19,9 @@ from .views import (
     ArticleCreateView,
     ArticleUpdateView,
     ArticleView,
-    ArticleDeleteView
+    ArticleDeleteView,
+    ArticleExportView,
+    CommentDeleteView
 )
 
 app_name = 'blog'
@@ -28,4 +30,7 @@ urlpatterns = [
     path('create/', ArticleCreateView.as_view(), name='create'),
     path('<int:pk>/update/', ArticleUpdateView.as_view(), name='update'),
     path('<int:pk>/delete/', ArticleDeleteView.as_view(), name='delete'),
+    path('<int:pk>/delete-comment/', CommentDeleteView.as_view(),
+         name='delete_comment'),
+    path('export/', ArticleExportView.as_view(), name='export'),
 ]

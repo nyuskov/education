@@ -1,0 +1,32 @@
+{% load blog_tags %}
+{% load static %}
+<div class="comment-form">
+    {% if user == article.author or user.is_superuser %}
+        <div class="blog-form__field blog-form__field_right">
+            <a class="blog-form__link" href="{% url "blog:delete_comment" comment.pk %}">
+                <img class="blog-form__img" src="{% static 'blog/images/delete.png' %}">
+            </a>
+        </div>
+    {% endif %}
+    <div class="comment-form__field">
+        <p>{{ comment.message }}</p>
+    </div>
+    {% comment %} <div class="comment-form__field comment-form__button">
+        <strong>show full</strong>
+    </div> {% endcomment %}
+    <div class="comment-form__field">
+        {{ comment.created_at }}
+    </div>
+    <div class="comment-form__field">
+        {{ comment.edited_at }}
+    </div>
+    <div class="comment-form__field">
+        was written by <strong>{{ comment.author }}</strong>
+    </div>
+    <div class="comment-form__reply">
+        {% for reply in comment|getReplies %}
+            {% include "blog/comment_form.html" with comment=reply %}
+        {% endfor %}
+    </div>
+</div>
+<p></p>

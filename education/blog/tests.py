@@ -107,3 +107,43 @@ class ArticleViewTestCase(TestCase):
                 transform=lambda article: article.title,
             )
             self.assertTemplateUsed(response, "blog/index.html")
+
+
+class ArticleExportViewTestCase(TestCase):
+    fixtures = [
+        'auth_fixtures.json',
+        'articles_fixtures.json',
+    ]
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.user = User.objects.create(username='testuser')
+
+        permission_viewarticle = Permission.objects.get(
+            codename="view_article"
+        )
+        cls.user.user_permissions.add(permission_viewarticle)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls.user.delete()
+
+    def setUp(self) -> None:
+        self.client.force_login(self.user)
+
+    def test_get_article_view(self):
+        response = self.client.get(reverse("blog:export"))
+        self.assertEqual(response.status_code, 200)
+        articles = Article.objects.order_by("pk").all()
+        expected_data = [
+            {
+                "pk": article.pk,
+                "title": article.title,
+                "message": article.message,
+            }
+            for article in articles
+        ]
+        articles_data = response.json()
+        self.assertEqual(
+            expected_data, articles_data["articles"],
+        )
