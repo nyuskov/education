@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 12:24+0000\n"
+"POT-Creation-Date: 2024-10-14 13:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,21 +116,21 @@ msgstr "Поиск"
 msgid "Update article"
 msgstr "Обновить статью"
 
-#: blog/views.py:30
-msgid "Article was created!"
-msgstr "Статья была создана!"
+#: blog/views.py:31
+msgid "Article was created"
+msgstr "Статья была создана"
 
-#: blog/views.py:36
-msgid "Article wasn't created!"
-msgstr "Статья не была создана!"
+#: blog/views.py:38
+msgid "Article wasn't created"
+msgstr "Статья не была создана"
 
-#: blog/views.py:75
-msgid "Article was updated!"
-msgstr "Статья была обновлена!"
+#: blog/views.py:78
+msgid "Article was updated"
+msgstr "Статья была обновлена"
 
-#: blog/views.py:81
-msgid "Article wasn't updated!"
-msgstr "Статья не была обновлена!"
+#: blog/views.py:85
+msgid "Article wasn't updated"
+msgstr "Статья не была обновлена"
 
 #: education/settings.py:143
 msgid "Russian"

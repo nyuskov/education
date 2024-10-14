@@ -27,13 +27,15 @@ class ArticleCreateView(PermissionRequiredMixin, CreateView):
 
     def form_valid(self, form):
         if self.request.method == "POST":
-            messages.success(self.request, _("Article was created!"))
+            messages.success(self.request, "{}!".format(
+                _("Article was created")))
 
         return super().form_valid(form)
 
     def form_invalid(self, form):
         if self.request.method == "POST":
-            messages.error(self.request, _("Article wasn't created!"))
+            messages.error(self.request, "{}!".format(
+                _("Article wasn't created")))
 
         return super().form_invalid(form)
 
@@ -72,13 +74,15 @@ class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         if self.request.method == "POST":
-            messages.success(self.request, _("Article was updated!"))
+            messages.success(self.request, "{}!".format(
+                _("Article was updated")))
 
         return super().form_valid(form)
 
     def form_invalid(self, form):
         if self.request.method == "POST":
-            messages.error(self.request, _("Article wasn't updated!"))
+            messages.error(self.request, "{}!".format(
+                _("Article wasn't updated")))
 
         return super().form_invalid(form)
 

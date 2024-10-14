@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 12:24+0000\n"
+"POT-Creation-Date: 2024-10-14 13:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,125 +20,129 @@ msgstr ""
 
 #: account/models.py:8
 msgid "Bio"
-msgstr ""
+msgstr "Bio"
 
 #: account/templates/account/profile.html:11
 #: account/templates/account/signin.html:11
 #: account/templates/account/signin.html:15 blog/templates/blog/index.html:38
 #: education/templates/index.html:11
 msgid "Sign In"
-msgstr ""
+msgstr "Sign In"
 
 #: account/templates/account/profile.html:76
 msgid "Change"
-msgstr ""
+msgstr "Change"
 
 #: account/templates/account/profile.html:82 education/templates/nav.html:16
 msgid "Sign Out"
-msgstr ""
+msgstr "Sign Out"
 
 #: account/templates/account/profile.html:86
 msgid "User is anonymous"
-msgstr ""
+msgstr "User is anonymous"
 
 #: account/templates/account/signin.html:28
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #: account/templates/account/signup.html:11
 #: account/templates/account/signup.html:15 blog/templates/blog/index.html:36
 #: education/templates/index.html:9 education/templates/nav.html:13
 msgid "Sign Up"
-msgstr ""
+msgstr "Sign Up"
 
 #: account/templates/account/signup.html:47
 #: blog/templates/blog/create_article.html:37
 #: blog/templates/blog/update_article.html:37
 msgid "Confirm"
-msgstr ""
+msgstr "Confirm"
 
 #: blog/models.py:37
 msgid "Title"
-msgstr ""
+msgstr "Title"
 
 #: blog/models.py:38
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: blog/templates/blog/blog_form.html:19
 msgid "show full"
-msgstr ""
+msgstr "show full"
 
 #: blog/templates/blog/blog_form.html:22
 #: blog/templates/blog/comment_form.html:26
 msgid "was written by"
-msgstr ""
+msgstr "was written by"
 
 #: blog/templates/blog/confirm_delete.html:7
 msgid "comment"
-msgstr ""
+msgstr "comment"
 
 #: blog/templates/blog/confirm_delete.html:8
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirm delete"
 
 #: blog/templates/blog/confirm_delete.html:12
 msgid "Are you shure you want to delete"
-msgstr ""
+msgstr "Are you shure you want to delete"
 
 #: blog/templates/blog/confirm_delete.html:17
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: blog/templates/blog/create_article.html:7
 msgid "Create article"
-msgstr ""
+msgstr "Create article"
 
 #: blog/templates/blog/create_article.html:12
 msgid "Create new article"
-msgstr ""
+msgstr "Create new article"
 
 #: blog/templates/blog/index.html:23 education/templates/index.html:4
 msgid "Main"
-msgstr ""
+msgstr "Main"
 
 #: blog/templates/blog/index.html:37
 msgid "or"
-msgstr ""
+msgstr "or"
 
 #: blog/templates/blog/search.html:3
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: blog/templates/blog/update_article.html:7
 #: blog/templates/blog/update_article.html:12
 msgid "Update article"
-msgstr ""
+msgstr "Update article"
 
-#: blog/views.py:30
-msgid "Article was created!"
-msgstr ""
+#: blog/views.py:31
+#, fuzzy
+#| msgid "Article was created!"
+msgid "Article was created"
+msgstr "Article was created!"
 
-#: blog/views.py:36
-msgid "Article wasn't created!"
-msgstr ""
+#: blog/views.py:38
+#, fuzzy
+#| msgid "Article wasn't created!"
+msgid "Article wasn't created"
+msgstr "Article wasn't created!"
 
-#: blog/views.py:75
-msgid "Article was updated!"
-msgstr ""
+#: blog/views.py:78
+msgid "Article was updated"
+msgstr "Article was updated"
 
-#: blog/views.py:81
-msgid "Article wasn't updated!"
-msgstr ""
+#: blog/views.py:85
+msgid "Article wasn't updated"
+msgstr "Article wasn't updated"
 
 #: education/settings.py:143
 msgid "Russian"
-msgstr ""
+msgstr "Russian"
 
 #: education/settings.py:144
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: education/templates/index.html:14
 msgid "Hello"
-msgstr ""
+msgstr "Hello"
