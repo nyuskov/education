@@ -1,46 +1,5 @@
-/* General styles */
-@font-face {
-    font-family: 'Roboto-Regular';
-    src: local('Roboto-Regular'), url('/static/account/fonts/Roboto-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'OpenSans';
-    src: local('OpenSans'), url('/static/account/fonts/OpenSans.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Tahoma';
-    src: local('Tahoma'), url('/static/account/fonts/Tahoma.ttf') format('truetype');
-}
-
-:root {
-    --main-color: white;
-    --main-bg-color: rgba(45, 45, 45, 1);
-    --input-bg-color: rgba(0, 0, 0, 1);
-    --input-color: rgba(100, 100, 100, 1);
-    --primary-bg-color: #059862;
-    --warning-color: #b1b857;
-    --error-color: #b12934;
-}
-
-body {
-    background: var(--main-bg-color);
-}
-
-/* Content */
-.content {
-    align-items: center;
-    align-content: center;
-    display: flex;
-    color: var(--main-color);
-    flex-direction: column;
-    height: 900px;
-    justify-content: center;
-}
-
 /* Links */
-.link {
+.form__link {
     color: var(--main-color);
     background-color: var(--main-bg-color);
     border: none;
@@ -49,79 +8,9 @@ body {
     font-size: 24px;
     text-decoration: none;
 }
-
-/* Headings (h4 etc.) */
-.heading {
-    font-family: 'Roboto-Regular';
-    font-size: 24px;
-}
-
-/* Forms */
-.form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form .errorlist {
-    font-family: 'OpenSans';
-    font-size: 16px;
-    color: var(--error-color);
-}
-
-.form__helptext {
-    font-family: 'Times New Roman';
-    font-size: 16px;
-    padding: 5px;
-    color: var(--warning-color);
-}
-
-.form .radiolist {
-    font-family: 'Times New Roman';
-    font-size: 16px;
-}
-
-.form__field {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.form__field_center {
-    align-self: center;
-}
-
-.form__label {
-    font-family: 'OpenSans';
-    font-size: 20px;
-}
-
-.form__input {
-    background-color: var(--input-bg-color);
-    border: none;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 3px var(--main-bg-color);
-    color: var(--input-color);
-    font-family: 'Times New Roman';
-    font-size: 16px;
-    height: 35px;
-    padding: 5px;
-    width: 250px;
-}
-
-.form__input:focus {
-    outline: none;
-}
-
-.form__button {
-    align-self: center;
-    background-color: var(--primary-bg-color);
-    border-radius: 5px;
-    border: none;
+.form__input_readonly {
+    background-color: var(--main-bg-color);
     color: var(--main-color);
-    cursor: pointer;
-    font-family: 'OpenSans';
-    font-size: 20px;
-    height: 50px;
-    padding: 3px;
-    width: 260px;
+    pointer-events: none;
+    width: 100%;
 }

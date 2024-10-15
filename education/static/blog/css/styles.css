@@ -1,6 +1,13 @@
+/* Comments */
+.comment-form__reply {
+    padding-left: 20px;
+}
+
+
+/* Forms */
 .blog-form {
     box-shadow: 0 1px 3px var(--input-bg-color);
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 10px;
     width: 50%;
 }
@@ -9,8 +16,116 @@
     color: var(--main-color);
     background-color: var(--main-bg-color);
     border: none;
-    font-size: 16px;
+    font-size: 12px;
     pointer-events: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+.blog-form__title {
+    font-size: 24px;
+    padding: 15px 5px;
+    text-align: center;
+}
+
+.blog-form__field_right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.blog-form__link {
+    color: var(--main-color);
+    font-family: 'Roboto-Regular';
+    font-size: 24px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+}
+
+.blog-form__img {
+    height: 35px;
+    width: 35px;
+}
+
+
+.blog-form__author {
+    color: var(--input-color);
+    font-size: 12px;
+    padding-top: 3px;
+    text-align: right;
+}
+
+.blog-form__message {
+    height: 150px;
+    overflow: hidden;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+.blog-form__button {
+    background-color: var(--primary-bg-color);
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    display: none;
+    font-family: 'OpenSans';
+    font-size: 10px;
+    float: left;
+    margin-left: 5px;
+    padding: 1px 2px;
+}
+
+.search-form {
+    flex-direction: row;
+    padding-bottom: 10px;
+    width: 50%;
+}
+
+.search-form__input {
+    width: 100%;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination__link {
+    align-items: center;
+    background-color: var(--input-color);
+    border-radius: 3px;
+    color: var(--main-bg-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    margin: 0px 1px;
+    text-decoration: none;
+    width: 35px;
+}
+
+.pagination__input {
+    align-items: center;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 3px;
+    color: var(--main-bg-color);
+    font-family: 'Tahoma';
+    font-size: 16px;
+    height: 35px;
+    margin: 0px 1px;
+    padding: 0px 1px;
+    text-align: center;
+    width: 50px;
+}
+
+.pagination__input:focus {
+    outline: none;
+}
+
+.pagination__link_active {
+    filter: brightness(70%);
 }

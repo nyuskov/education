@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 13:53+0000\n"
+"POT-Creation-Date: 2024-10-14 13:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,23 +115,19 @@ msgstr "Search"
 msgid "Update article"
 msgstr "Update article"
 
-#: blog/views.py:31
-#, fuzzy
-#| msgid "Article was created!"
+#: blog/views.py:30
 msgid "Article was created"
-msgstr "Article was created!"
+msgstr "Article was created"
 
-#: blog/views.py:38
-#, fuzzy
-#| msgid "Article wasn't created!"
+#: blog/views.py:36
 msgid "Article wasn't created"
-msgstr "Article wasn't created!"
+msgstr "Article wasn't created"
 
-#: blog/views.py:78
+#: blog/views.py:76
 msgid "Article was updated"
 msgstr "Article was updated"
 
-#: blog/views.py:85
+#: blog/views.py:83
 msgid "Article wasn't updated"
 msgstr "Article wasn't updated"
 

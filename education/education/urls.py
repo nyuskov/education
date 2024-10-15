@@ -23,7 +23,8 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 from django.views.decorators.cache import cache_page
-
+from django.views.generic import RedirectView
+from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +35,7 @@ urlpatterns += i18n_patterns(
         JavaScriptCatalog.as_view()), name="javascript-catalog"),
     path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
+    path('api/', include('api.urls')),
     path('', TemplateView.as_view(template_name='index.html')),
     prefix_default_language=False,
 )
@@ -45,3 +47,7 @@ if settings.DEBUG:
     urlpatterns.extend(
         static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     )
+    urlpatterns += [
+        re_path(r'^favicon\.ico$', RedirectView.as_view(
+            url=f'{settings.STATIC_URL}images/favicon.ico')),
+    ]
