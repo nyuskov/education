@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
-<div class="nav">
+<nav class="nav">
+    {% comment %} <a href="{% url 'index' %}"><img class="logo" src="{% static 'images/logo.png' %}"></a> {% endcomment %}
     <div class="nav__icon">
         <div class="nav__text">
             <strong class="nav__glyph">___</strong>
@@ -15,4 +16,4 @@
         {% csrf_token %}
         <input class="nav__link link is_hidden" form="signout" type="submit" value="{% translate "Sign Out" %}">
     </form>
-</div>
+</nav>

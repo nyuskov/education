@@ -3,11 +3,11 @@
 {% block title %}
    {% translate "Main" %}
 {% endblock %}
-{% block content %}
+{% block main %}
     {% if not user.is_authenticated %}
-        <div class="content__item">
+        <div class="main__item">
             <a class="link" href="{% url 'account:signup' %}">{% translate "Sign Up" %}</a>
-            <p>or</p>
+            <p>{% translate "or" %}</p>
             <a class="link" href="{% url 'account:signin' %}">{% translate "Sign In" %}</a>
         </div>
     {% else %}

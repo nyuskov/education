@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import UpdateView, CreateView
@@ -8,6 +10,8 @@ from .forms import (CustomUserCreationForm,
                     CustomUserForm,
                     CustomProfileForm)
 from .models import Profile
+
+logger = logging.getLogger(__name__)
 
 
 class SignUpView(CreateView):
@@ -37,6 +41,7 @@ class UserChangeView(PermissionRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["profile_form"] = profile_form or CustomProfileForm(
             instance=getattr(self.object, "profile", None))
+        logger.info("User account data: %s", context)
 
         return context
 

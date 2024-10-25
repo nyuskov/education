@@ -11,8 +11,8 @@
     {% translate "Sign Up" %}
 {% endblock %}
 
-{% block content %}
-    <h4 class="heading">{% translate "Sign Up" %}</h4>
+{% block main %}
+    <h2 class="heading">{% translate "Sign Up" %}</h2>
     <form class="form" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}

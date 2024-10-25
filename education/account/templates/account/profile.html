@@ -11,7 +11,7 @@
     {% translate "Sign In" %}
 {% endblock %}
 
-{% block content %}
+{% block main %}
     {% if user.is_authenticated %}
         <form class="form" method="post">
             {% csrf_token %}

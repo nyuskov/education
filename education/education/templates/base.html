@@ -11,19 +11,21 @@
             {% endblock %}
         </title>
     </head>
-    <body>
-        <div class="main">
-            <div class="header">
-                {% block header %}
-                    {% if user.is_authenticated %}
-                        {% include "nav.html" %}
-                    {% endif %}
-                {% endblock %}
-            </div>
-            <div class="content">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+    <body class="content">
+        <header class="header">
+            {% block header %}
+                {% if user.is_authenticated %}
+                    {% include "nav.html" %}
+                {% endif %}
+            {% endblock %}
+        </header>
+        <main class="main">
+            {% block main %}
+            {% endblock %}
+        </main>
+        <footer class="footer">
+            {% block footer %}
+            {% endblock %}
+        </footer>
     </body>
 </html>

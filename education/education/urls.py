@@ -36,7 +36,7 @@ urlpatterns += i18n_patterns(
     path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
     path('api/', include('api.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='index.html'), name="index"),
     prefix_default_language=False,
 )
 

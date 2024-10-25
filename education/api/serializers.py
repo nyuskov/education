@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Article
+from blog.models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
@@ -17,3 +17,10 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+    def save(self):
+        if self.validated_data.get('author'):
+            self.validated_data['author'] = User.objects.get(
+                username=self.validated_data['author'])
+
+        return super().save()
