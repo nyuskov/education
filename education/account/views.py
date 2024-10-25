@@ -50,10 +50,11 @@ class UserChangeView(PermissionRequiredMixin, UpdateView):
 
         if self.request.method == "POST":
             if getattr(self.object, "profile", None):
-                data = self.request.POST.dict()
-                data["user"] = self.object
                 profile_form = CustomProfileForm(
-                    data,
+                    {
+                        "user": self.object,
+                        "bio": self.request.POST["bio"],
+                    },
                     instance=self.object.profile
                 )
                 if profile_form.is_valid():
